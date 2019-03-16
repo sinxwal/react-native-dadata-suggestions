@@ -1,0 +1,41 @@
+{
+  "name": "react-native-dadata-suggestions",
+  "version": "0.1.0",
+  "description": "React Native DaData suggestions",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "lint": "tslint --project tsconfig.json --fix",
+    "build": "rm -rf dist && tsc",
+    "watch": "tsc --watch --pretty",
+    "test": "tslint --project tsconfig.json && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sinxwal/react-native-dadata-suggestions.git"
+  },
+  "keywords": [
+    "react-native", "dadata", "dadata-suggestions"
+  ],
+  "author": "Sergey Tshovrebov <sinxwal@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sinxwal/react-native-dadata-suggestions/issues"
+  },
+  "homepage": "https://github.com/sinxwal/react-native-dadata-suggestions#readme",
+  "dependencies": {},
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*"
+  },
+  "devDependencies": {
+    "@types/react": "^16.6.3",
+    "@types/react-native": "^0.57.40",
+    "prettier": "^1.16.4",
+    "tslint": "^5.14.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^3.6.0",
+    "typescript": "^3.3.3333"
+  }
+}

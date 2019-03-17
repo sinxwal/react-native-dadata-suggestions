@@ -1,9 +1,8 @@
 # react-native-dadata-suggestions [![npm version](https://badge.fury.io/js/react-native-dadata-suggestions.svg)](https://badge.fury.io/js/react-native-dadata-suggestions)
----
 
-### Get started
+## Get started
 
-## Installation
+### Installation
 
 ```bash
 yarn add react-native-dadata-suggestions

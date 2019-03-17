@@ -4631,10 +4631,10 @@ react-native-branch@2.2.5:
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.2.5.tgz#4074dd63b4973e6397d9ce50e97b57c77a518e9d"
   integrity sha1-QHTdY7SXPmOX2c5Q6XtXx3pRjp0=
 
-react-native-dadata-suggestions@^0.1.1-alpha.1:
-  version "0.1.1-alpha.1"
-  resolved "https://registry.yarnpkg.com/react-native-dadata-suggestions/-/react-native-dadata-suggestions-0.1.1-alpha.1.tgz#bf4cc5430d0e44de13dacf76e5b5be79ff0c4017"
-  integrity sha512-Wr+GqZ0P7dYtI7q4cC3gOrdaBq6BMuAqa1yyM6aHlSbaDfkVUgsKh3XE8x053g2MZ/MG3Wnllmc3RFLht+mong==
+react-native-dadata-suggestions@^0.1.1-alpha.2:
+  version "0.1.1-alpha.2"
+  resolved "https://registry.yarnpkg.com/react-native-dadata-suggestions/-/react-native-dadata-suggestions-0.1.1-alpha.2.tgz#a96da05d726cde3c6499dccd9a0475920444212d"
+  integrity sha512-RkF1cQY+zH6KFmoMY3QdAc2YmTH2VqYllaSYV1x2yR/81h/4xQJeDVlJEcmIT7KUYs1UTL1oWiZ+QyatRFFsLA==
   dependencies:
     react-native-highlight-words "^1.0.1"
 

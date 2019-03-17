@@ -8,6 +8,7 @@
 yarn add react-native-dadata-suggestions
 # or
 npm install react-native-dadata-suggestions
+# or `react-native-dadata-suggestions@next` for dev version.
 ```
 
 ### Basic usage
@@ -26,5 +27,5 @@ import { AddressSuggestions } from 'react-native-dadata-suggestions';
 ```bash
 cd demo
 yarn
-yarn run android
+yarn run android # yarn run ios
 ```

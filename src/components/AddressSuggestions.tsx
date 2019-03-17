@@ -120,7 +120,7 @@ export interface AddressSuggestionsProps {
   onSelect?: (suggestion: DadataSuggestion) => void;
   placeholder?: string;
   query?: string;
-  renderItem?: ({ item }: any) => void;
+  renderItem?: any;
   token: string;
 }
 
@@ -201,11 +201,13 @@ export class AddressSuggestions extends React.PureComponent<
 
   selectSuggestion = (index: number) => {
     if (this.state.suggestions.length >= index - 1) {
+      const currentSuggestion: DadataSuggestion = this.state.suggestions[index];
+
       this.setState(
         {
-          query: this.state.suggestions[index].value,
+          query: currentSuggestion.value,
           suggestionsVisible: false,
-          inputQuery: this.state.suggestions[index].value
+          inputQuery: currentSuggestion.value
         },
         () => this.fetchSuggestions()
       );
@@ -291,24 +293,12 @@ export class AddressSuggestions extends React.PureComponent<
   }
 }
 
-const androidStyles = {
+const styles = StyleSheet.create({
   container: {
-    flex: 1
+    zIndex: 1
   },
   inputContainer: {
     marginBottom: 0
-  },
-  list: {
-    backgroundColor: 'white',
-    borderTopWidth: 0,
-    margin: 10,
-    marginTop: 0
-  }
-};
-
-const iosStyles = {
-  container: {
-    zIndex: 1
   },
   input: {
     backgroundColor: 'white',
@@ -322,16 +312,4 @@ const iosStyles = {
     position: 'absolute',
     right: 0
   }
-};
-
-const styles = StyleSheet.create({
-  input: {
-    backgroundColor: 'white',
-    height: 40,
-    paddingLeft: 3
-  },
-  ...Platform.select({
-    android: { ...androidStyles },
-    ios: { ...iosStyles }
-  })
 });

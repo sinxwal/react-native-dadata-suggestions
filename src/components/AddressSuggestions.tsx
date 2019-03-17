@@ -1,10 +1,21 @@
 import * as React from 'react';
-import { View } from 'react-native';
+import { Text, View } from 'react-native';
 
-export interface AddressSuggestionsProps {}
+export interface AddressSuggestionsProps {
+  token: string;
+}
+
 class AddressSuggestions extends React.Component<AddressSuggestionsProps> {
+  static defaultProps = {
+    token: ''
+  };
+
   render() {
-    return <View />;
+    return (
+      <View>
+        <Text>{this.props.token}</Text>
+      </View>
+    );
   }
 }
 

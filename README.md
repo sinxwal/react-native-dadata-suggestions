@@ -21,3 +21,11 @@ import { AddressSuggestions } from 'react-native-dadata-suggestions';
 
 <AddressSuggestions token={ token } />
 ```
+
+## Running demo app
+
+```bash
+cd demo
+yarn
+yarn run android
+```

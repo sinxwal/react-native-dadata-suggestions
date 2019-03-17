@@ -1,6 +1,6 @@
 {
   "name": "react-native-dadata-suggestions",
-  "version": "0.1.0",
+  "version": "0.1.1--alpha.1",
   "description": "React Native DaData suggestions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,7 +15,10 @@
     "url": "https://github.com/sinxwal/react-native-dadata-suggestions.git"
   },
   "keywords": [
-    "react-native", "dadata", "dadata-suggestions"
+    "react-native",
+    "reactnative",
+    "dadata",
+    "dadata-suggestions"
   ],
   "author": "Sergey Tshovrebov <sinxwal@gmail.com>",
   "license": "MIT",
@@ -23,7 +26,9 @@
     "url": "https://github.com/sinxwal/react-native-dadata-suggestions/issues"
   },
   "homepage": "https://github.com/sinxwal/react-native-dadata-suggestions#readme",
-  "dependencies": {},
+  "dependencies": {
+    "react-native-highlight-words": "^1.0.1"
+  },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"

@@ -1,13 +1,13 @@
 {
   "name": "react-native-dadata-suggestions",
-  "version": "0.1.1-alpha.5",
+  "version": "0.1.1-alpha.6",
   "description": "React Native DaData suggestions",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "clean": "rm -rf dist ",
-    "lint": "tslint --project tsconfig.json --fix",
+    "clean": "rm -rf dist",
     "build": "rm -rf dist && tsc",
+    "lint": "tslint --project tsconfig.json --fix",
     "watch": "tsc --watch --pretty",
     "test": "tslint --project tsconfig.json && tsc"
   },

@@ -1,20 +1,18 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "module": "es6",
+    "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react-native",
     "outDir": "dist",
     "rootDir": "src",
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
-    "experimentalDecorators": true,
     "preserveConstEnums": true,
+    "skipLibCheck": true,
     "sourceMap": true,
-    "strictNullChecks": true,
-    "declaration": true,
-    "types": ["react", "react-native"],
-    "skipLibCheck": true
+    "strict": true,
+    "declaration": true
   },
   "filesGlob": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["dist", "node_modules"],

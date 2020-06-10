@@ -1,24 +1,31 @@
-import * as React from 'react';
-import { FlatList, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
-export class AddressSuggestions extends React.PureComponent {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.AddressSuggestions = void 0;
+const react_1 = require("react");
+const react_native_1 = require("react-native");
+const styles_1 = require("./styles");
+const defaultKeyExtractor = (item, index) => index;
+const defaultItemRenderer = ({ item }) => <react_native_1.Text>{item}</react_native_1.Text>;
+class AddressSuggestions extends react_1.default.PureComponent {
     constructor(props) {
+        var _a;
         super(props);
         this.state = {
-            query: this.props.query ? this.props.query : '',
+            query: (_a = this.props.query) !== null && _a !== void 0 ? _a : '',
             inputFocused: false,
             suggestions: [],
             suggestionsVisible: true,
-            isValid: false
+            isValid: false,
         };
         this.onInputFocus = () => {
             this.setState({ inputFocused: true });
-            if (this.state.suggestions.length == 0) {
+            if (this.state.suggestions.length === 0) {
                 this.fetchSuggestions();
             }
         };
         this.onInputBlur = () => {
             this.setState({ inputFocused: false });
-            if (this.state.suggestions.length == 0) {
+            if (this.state.suggestions.length === 0) {
                 this.fetchSuggestions();
             }
         };
@@ -28,19 +35,21 @@ export class AddressSuggestions extends React.PureComponent {
             });
         };
         this.fetchSuggestions = () => {
+            const { count = 5, token = '' } = this.props;
+            const { query } = this.state;
             fetch('https://suggestions.dadata.ru/suggestions/api/4_1/rs/suggest/address', {
                 method: 'POST',
                 headers: {
                     Accept: 'application/json',
-                    Authorization: `Token ${this.props.token}`,
-                    'Content-Type': 'application/json'
+                    Authorization: `Token ${token}`,
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    query: this.state.query,
-                    count: this.props.count ? this.props.count : 5,
+                    count,
+                    query,
                     locations: [{ kladr_id: '50' }, { kladr_id: '77' }],
-                    locations_boost: [{ kladr_id: '77' }]
-                })
+                    locations_boost: [{ kladr_id: '77' }],
+                }),
             })
                 .then(response => response.json())
                 .then(response => this.setState({ suggestions: response.suggestions }))
@@ -66,79 +75,31 @@ export class AddressSuggestions extends React.PureComponent {
             }
         };
         this.renderTextInput = () => {
-            const { inputStyle } = this.props;
-            return (<TextInput autoCapitalize="none" autoCorrect={false} editable={!this.props.disabled} onChangeText={this.onInputChange} onFocus={this.onInputFocus} onBlur={this.onInputBlur} placeholder={this.props.placeholder ? this.props.placeholder : ''} ref={ref => (this.textInputRef = ref)} style={[styles.input, inputStyle]} value={this.state.query}/>);
+            const { disabled = false, inputStyle, placeholder = '' } = this.props;
+            return (<react_native_1.TextInput autoCapitalize="none" autoCorrect={false} editable={!disabled} onChangeText={this.onInputChange} onFocus={this.onInputFocus} onBlur={this.onInputBlur} placeholder={placeholder} ref={ref => (this.textInputRef = ref)} style={[styles_1.styles.input, inputStyle]} value={this.state.query}/>);
         };
         this.renderSuggestionItem = ({ item, index }) => {
-            const { renderItem: SuggestionItem } = this.props;
-            return (<TouchableOpacity onPress={(e) => this.onSuggestionClick(index, e)}>
+            const { renderItem: SuggestionItem = defaultItemRenderer } = this.props;
+            return (<react_native_1.TouchableOpacity onPress={(e) => this.onSuggestionClick(index, e)}>
         <SuggestionItem item={item}/>
-      </TouchableOpacity>);
+      </react_native_1.TouchableOpacity>);
         };
-        this.resultListRef = React.createRef();
-        this.textInputRef = React.createRef();
-    }
-    renderSuggestions() {
-        const { ItemSeparatorComponent, keyExtractor, listStyle } = this.props;
-        const { suggestions } = this.state;
-        return (<FlatList ref={this.resultListRef} data={suggestions} renderItem={this.renderSuggestionItem} keyExtractor={keyExtractor} ItemSeparatorComponent={ItemSeparatorComponent} style={[styles.list, listStyle]}/>);
+        this.renderSuggestions = () => {
+            const { ItemSeparatorComponent = null, keyExtractor, listStyle } = this.props;
+            const { suggestions } = this.state;
+            return (<react_native_1.FlatList ref={this.resultListRef} data={suggestions} renderItem={this.renderSuggestionItem} keyExtractor={keyExtractor !== null && keyExtractor !== void 0 ? keyExtractor : defaultKeyExtractor} ItemSeparatorComponent={ItemSeparatorComponent} style={[styles_1.styles.list, listStyle]}/>);
+        };
+        this.resultListRef = react_1.default.createRef();
+        this.textInputRef = react_1.default.createRef();
     }
     render() {
         const { containerStyle, inputContainerStyle, listContainerStyle } = this.props;
         const { suggestions, suggestionsVisible } = this.state;
-        return (<View style={[styles.container, containerStyle]}>
-        <View style={[styles.inputContainer, inputContainerStyle]}>{this.renderTextInput()}</View>
-        {suggestionsVisible && suggestions && suggestions.length > 0 && (<View style={listContainerStyle}>{this.renderSuggestions()}</View>)}
-      </View>);
+        return (<react_native_1.View style={[styles_1.styles.container, containerStyle]}>
+        <react_native_1.View style={[styles_1.styles.inputContainer, inputContainerStyle]}>{this.renderTextInput()}</react_native_1.View>
+        {suggestionsVisible && suggestions && suggestions.length > 0 && (<react_native_1.View style={listContainerStyle}>{this.renderSuggestions()}</react_native_1.View>)}
+      </react_native_1.View>);
     }
 }
-AddressSuggestions.defaultProps = {
-    disabled: false,
-    ItemSeparatorComponent: null,
-    keyExtractor: (item, index) => index.toString(),
-    renderItem: ({ item }) => <Text>{item}</Text>,
-    token: ''
-};
-const androidStyles = {
-    inputContainer: {
-        marginBottom: 0
-    },
-    list: {
-        backgroundColor: 'white',
-        borderTopWidth: 0,
-        margin: 10,
-        marginTop: 0
-    }
-};
-const iosStyles = {
-    inputContainer: {},
-    input: {
-        backgroundColor: 'white',
-        height: 40,
-        paddingLeft: 3
-    },
-    list: {
-        backgroundColor: 'white',
-        borderTopWidth: 0,
-        left: 0,
-        position: 'absolute',
-        right: 0
-    }
-};
-const styles = StyleSheet.create(Object.assign({ container: {
-        flex: 1,
-        width: '100%',
-        left: 0,
-        position: 'absolute',
-        right: 0,
-        top: 0,
-        zIndex: 1
-    }, input: {
-        backgroundColor: 'white',
-        height: 40,
-        paddingLeft: 3
-    } }, Platform.select({
-    android: Object.assign({}, androidStyles),
-    ios: Object.assign({}, iosStyles)
-})));
+exports.AddressSuggestions = AddressSuggestions;
 //# sourceMappingURL=AddressSuggestions.js.map

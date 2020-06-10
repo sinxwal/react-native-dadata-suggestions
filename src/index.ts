@@ -1,6 +1,6 @@
 import {
   AddressSuggestions,
-  AddressSuggestionsProps as AddressSuggestionsPropsDefine
+  AddressSuggestionsProps as AddressSuggestionsPropsDefine,
 } from './components/AddressSuggestions';
 
 export { AddressSuggestions, AddressSuggestionsPropsDefine };

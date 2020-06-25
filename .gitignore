@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+# Macos cache files
+.DS_Store
+
+# VSCode
+.history

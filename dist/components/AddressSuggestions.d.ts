@@ -96,6 +96,7 @@ export interface AddressSuggestionsProps {
     query?: string;
     renderItem: any;
     token: string;
+    onFetch?: (suggestions: DadataSuggestion[]) => void;
 }
 interface AddressSuggestionsState {
     inputFocused: boolean;

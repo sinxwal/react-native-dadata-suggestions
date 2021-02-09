@@ -47,8 +47,6 @@ class AddressSuggestions extends react_1.default.PureComponent {
                 body: JSON.stringify({
                     count,
                     query,
-                    locations: [{ kladr_id: '50' }, { kladr_id: '77' }],
-                    locations_boost: [{ kladr_id: '77' }],
                 }),
             })
                 .then(response => response.json())

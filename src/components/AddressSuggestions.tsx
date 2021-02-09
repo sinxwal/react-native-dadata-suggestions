@@ -113,6 +113,7 @@ export interface AddressSuggestionsProps {
   query?: string;
   renderItem: any;
   token: string;
+  onFetch?: (suggestions: DadataSuggestion[]) => void;
 }
 
 interface AddressSuggestionsState {
@@ -179,12 +180,14 @@ export class AddressSuggestions extends React.PureComponent<
       body: JSON.stringify({
         count,
         query,
-        locations: [{ kladr_id: '50' }, { kladr_id: '77' }],
-        locations_boost: [{ kladr_id: '77' }],
       }),
     })
       .then(response => response.json())
-      .then(response => this.setState({ suggestions: response.suggestions }))
+      .then(response => {
+        this.state.query && this.props.onFetch && this.props.onFetch(response.suggestions);
+        this.setState({suggestions: response.suggestions});
+        return response;
+      })
       .catch(error => console.log(error));
   };
 
